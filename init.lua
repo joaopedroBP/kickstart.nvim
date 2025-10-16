@@ -103,8 +103,8 @@ vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
 -- vim.o.relativenumber = true
-vim.opt.tabstop = 2 
-vim.opt.shiftwidth = 2 
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -176,9 +176,11 @@ vim.o.confirm = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('i', 'jk', '<esc>', { desc = 'sair do modo Insert com JK' })
 
-vim.keymap.set({ 'n', 'i', 'v' }, '<Up>', '<Nop>', { desc = 'Desabilitar seta ↑' }) 
-vim.keymap.set({ 'n', 'i', 'v' }, '<Down>', '<Nop>', { desc = 'Desabilitar seta ↓' }) 
-vim.keymap.set({ 'n', 'i', 'v' }, '<Left>', '<Nop>', { desc = 'Desabilitar seta ←' }) 
+vim.keymap.set('n', 'nn', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+
+vim.keymap.set({ 'n', 'i', 'v' }, '<Up>', '<Nop>', { desc = 'Desabilitar seta ↑' })
+vim.keymap.set({ 'n', 'i', 'v' }, '<Down>', '<Nop>', { desc = 'Desabilitar seta ↓' })
+vim.keymap.set({ 'n', 'i', 'v' }, '<Left>', '<Nop>', { desc = 'Desabilitar seta ←' })
 vim.keymap.set({ 'n', 'i', 'v' }, '<Right>', '<Nop>', { desc = 'Desabilitar seta →' })
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -278,6 +280,13 @@ require('lazy').setup({
   -- options to `gitsigns.nvim`.
   --
   -- See `:help gitsigns` to understand what the configuration keys do
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('nvim-tree').setup {}
+    end,
+  },
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
