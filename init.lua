@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -172,7 +172,12 @@ vim.o.confirm = true
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('i', 'jk', '<esc>', { desc = 'sair do modo Insert com JK' })
 
+vim.keymap.set({ 'n', 'i', 'v' }, '<Up>', '<Nop>', { desc = 'Desabilitar seta ↑' }) 
+vim.keymap.set({ 'n', 'i', 'v' }, '<Down>', '<Nop>', { desc = 'Desabilitar seta ↓' }) 
+vim.keymap.set({ 'n', 'i', 'v' }, '<Left>', '<Nop>', { desc = 'Desabilitar seta ←' }) 
+vim.keymap.set({ 'n', 'i', 'v' }, '<Right>', '<Nop>', { desc = 'Desabilitar seta →' })
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
